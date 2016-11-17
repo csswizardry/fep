@@ -1,0 +1,861 @@
+@charset "UTF-8";
+@import url(core-import.css);
+/*------------------------------------*\
+  #UI
+\*------------------------------------*/
+/**
+ * CONTENTS
+ *
+ * COMPONENTS
+ * Logo.................Make our logo a reusable component.
+ * Page.................Full page wrapper.
+ * Page-head............Page header styles.
+ * Page-foot............Page footer styles.
+ * Nav primary..........The site’s main nav.
+ * Nav secondary........Secondary nav styles.
+ * Nav tertiary.........Horizontally scrolling nav.
+ * Masthead.............Site’s main masthead.
+ * Sub-content..........Secondary/supporting content.
+ * Panel................Simple panelled boxout.
+ * Score................Score lozenge for place ratings.
+ * Buttons..............Button styles.
+ * Avatar...............General avatar styles.
+ * Testimonial..........Quote styles.
+ * Calendar.............Simple static calendar component.
+ * Headline.............Basic heading style for generic headlines.
+ * Promo................Promotional box styling.
+ * Pagination...........Responsive pagination component.
+ *
+ * SCOPES
+ * Prose................Set up a new styling context for long-format text.
+ *
+ * THEMES
+ * Red..................Simple red theme for the site.
+ * Custom...............Custom-specific overrides.
+ */
+
+/*------------------------------------*\
+  #LOGO
+\*------------------------------------*/
+.c-logo__fill {
+  fill: #378bb5;
+}
+.c-page-head .c-logo__fill {
+  fill: currentcolor;
+}
+
+/*------------------------------------*\
+  #PAGE
+\*------------------------------------*/
+@media (min-width: 64em) {
+  .c-page.has-fixed-page-head {
+    padding-top: 70px;
+  }
+}
+
+/*------------------------------------*\
+  #PAGE-HEAD
+\*------------------------------------*/
+.c-page-head {
+  background-color: #378bb5;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.1);
+}
+.c-page-head:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+@media (min-width: 64em) {
+  .c-page-head.is-fixed {
+    text-align: left;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+}
+
+.c-page-head__logo {
+  display: block;
+  line-height: 0;
+  margin-bottom: 20px;
+}
+@media (min-width: 64em) {
+  .c-page-head__logo {
+    float: left;
+    margin-bottom: 0;
+  }
+}
+
+/**
+ * 1. The height of the nav needs to marry up with the height of the logo.
+ */
+.c-page-head__nav {
+  float: right;
+  line-height: 30px;
+  /* [1] */
+}
+
+/*------------------------------------*\
+  #PAGE-FOOT
+\*------------------------------------*/
+.c-page-foot {
+  padding: 20px;
+  font-size: 12px;
+  font-size: 0.857142857rem;
+  line-height: 1.666666667;
+  background-color: #333;
+  color: #fff;
+}
+
+/*------------------------------------*\
+  #NAV-PRIMARY
+\*------------------------------------*/
+.c-nav-primary__link {
+  display: inline-block;
+  padding-right: 20px;
+  padding-left: 20px;
+  font-weight: 400;
+}
+.c-nav-primary__link.is-active {
+  text-decoration: underline;
+  cursor: default;
+}
+
+/*------------------------------------*\
+  #NAV-SECONDARY
+\*------------------------------------*/
+.c-nav-secondary {
+  text-align: center;
+}
+
+.c-nav-secondary__item {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.c-nav-secondary__link {
+  font-weight: 400;
+}
+
+/*------------------------------------*\
+  #NAV-TERTIARY
+\*------------------------------------*/
+.c-nav-tertiary {
+  background-color: #333;
+  color: #fff;
+  position: relative;
+  text-align: right;
+}
+.c-nav-tertiary::before, .c-nav-tertiary::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 20px;
+}
+.c-nav-tertiary::before {
+  left: 0;
+  background-image: linear-gradient(to right, #333 0, transparent 100%);
+}
+.c-nav-tertiary::after {
+  right: 0;
+  background-image: linear-gradient(to left, #333 0, transparent 100%);
+}
+
+.c-nav-tertiary__list {
+  white-space: nowrap;
+  overflow-x: scroll;
+  margin: 0;
+  list-style: none;
+  font-size: 0;
+  padding-right: 10px;
+  padding-left: 10px;
+  -webkit-overflow-scrolling: touch;
+}
+.c-nav-tertiary__list:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.c-nav-tertiary__list::-webkit-scrollbar {
+  display: none;
+}
+
+.c-nav-tertiary__item {
+  font-size: 12px;
+  font-size: 0.857142857rem;
+  line-height: 1.666666667;
+  display: inline-block;
+}
+.c-nav-tertiary__item + .c-nav-tertiary__item {
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.c-nav-tertiary__link {
+  font-weight: 400;
+  display: block;
+  padding: 10px;
+  color: #fff;
+  letter-spacing: 0.025em;
+}
+
+/*------------------------------------*\
+  #MASTHEAD
+\*------------------------------------*/
+.c-masthead {
+  position: relative;
+  background-color: #378bb5;
+  color: white;
+  overflow: hidden;
+  height: 0;
+  padding-top: 56.25%;
+  margin-bottom: 20px;
+}
+@media (min-width: 75em) {
+  .c-masthead {
+    padding-top: 0;
+    height: 720px;
+  }
+}
+
+.c-masthead__media {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.c-masthead__text {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 20px;
+  margin-bottom: 0;
+  background-color: rgba(0, 0, 0, 0.25);
+  text-shadow: 0 -1px rgba(0, 0, 0, 0.5);
+}
+
+.c-masthead__title {
+  font-weight: 900;
+  font-size: 60px;
+  font-size: 4.285714286rem;
+  line-height: 1;
+}
+
+/*------------------------------------*\
+  #SUB-CONTENT
+\*------------------------------------*/
+/**
+ * Housing for any secondary content.
+ */
+.c-sub-content {
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #666;
+  margin-bottom: 20px;
+  /**
+   * Remove the margin from the last element in the sub-content area so as to
+   * avoid doubled spacings (compounded paddings and margins).
+   */
+}
+.c-sub-content > :last-child {
+  margin-bottom: 0;
+}
+
+/**
+ * 1. Outdent the heading to touch the edges of the sub-content area.
+ * 2. Re-indent the heading’s actual text to line back up with the rest of
+ *    the sub-content’s content.
+ * 3. Adjust the bottom margin to account for the added border bottom (puts
+ *    text back on the baseline grid).
+ */
+.c-sub-content__title {
+  font-size: 12px;
+  font-size: 0.857142857rem;
+  line-height: 1.666666667;
+  color: #378bb5;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 400;
+  margin-right: -20px;
+  /* [1] */
+  margin-left: -20px;
+  /* [1] */
+  padding-right: 20px;
+  /* [2] */
+  padding-left: 20px;
+  /* [2] */
+  border-bottom: 1px solid;
+  margin-bottom: 19px;
+  /* [3] */
+}
+
+.c-sub-content__title--featured {
+  font-weight: 700;
+  border-bottom-width: 2px;
+  margin-bottom: 18px;
+  /* [3] */
+}
+
+/**
+ * Image-like content should be full-bleed in the sub-content area.
+ *
+ * 1. Pull element back out to the very left of the sub-content (including
+ *    padding).
+ * 2. Needs disabling so that we can manipulate widths.
+ * 3. Fallback width for browsers that don’t support `calc()`.
+ * 4. Force image to be full width *plus* the area taken up by the
+ *    sub-content’s padding.
+ */
+.c-sub-content__img {
+  margin-left: -20px;
+  /* [1] */
+  max-width: none;
+  /* [2] */
+  width: 100%;
+  /* [3] */
+  width: calc(100% + 40px);
+  /* [4] */
+}
+
+/*------------------------------------*\
+  #PANEL
+\*------------------------------------*/
+.c-panel {
+  background-color: #fff;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  border: 1px solid #e4e4e4;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.025);
+}
+
+.c-panel__masthead {
+  height: 200px;
+  overflow: hidden;
+  background-color: #e4e4e4;
+}
+
+.c-panel__masthead--small {
+  height: 100px;
+}
+
+.c-panel__masthead--fluid {
+  position: relative;
+  height: auto;
+  padding-top: 56.25%;
+}
+
+.c-panel__masthead-media {
+  width: 100%;
+  object-fit: cover;
+}
+.c-panel__masthead--fluid .c-panel__masthead-media {
+  position: absolute;
+  top: -25%;
+  left: 0;
+}
+
+.c-panel__content {
+  padding: 20px;
+}
+.c-panel__content > :last-child {
+  margin-bottom: 0;
+}
+
+.c-panel__link {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  padding: 20px;
+  border-top: 1px solid #e4e4e4;
+  color: #333;
+}
+.c-panel__link:hover, .c-panel__link:focus {
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.01);
+  color: #378bb5;
+}
+
+.c-panel--inverse {
+  background-color: #378bb5;
+  color: #fff;
+}
+
+/*------------------------------------*\
+  #SCORE
+\*------------------------------------*/
+/**
+ * Each Discovry has an associated score (e.g. 7.2 out of a possible 10). The
+ * Score component simply displays that score colored appropriately.
+ *
+ * We blend between three main brackets of score (Poor, Average, and Good) by
+ * creating an array of scores and their colors, and then looping through that
+ * array in order to output selectors that bind onto a data attribute, for
+ * example:
+ *
+ * .c-score[data-score^="7."] {}
+ *
+ * This selector looks for a DOM node with a class of `.c-score`, and then
+ * sees what the first characters of its `data-score` attribute are (`^=`). If
+ * the first characters are, for example, 7., then the DOM node gets styled in
+ * the color of the 7.x rating.
+ */
+.c-score {
+  display: inline-block;
+  /**
+   * Apply the score’s color as a background by augmenting with a class of
+   * `.c-score--inverse`.
+   *
+   * 1. This magic number applies the right amount of padding to spoof a space
+   *    character either side of the text.
+   */
+}
+.c-score[data-score^="0."] {
+  color: red;
+}
+.c-score[data-score^="1."] {
+  color: #ff2100;
+}
+.c-score[data-score^="2."] {
+  color: #ff4200;
+}
+.c-score[data-score^="3."] {
+  color: #ff6300;
+}
+.c-score[data-score^="4."] {
+  color: #ff8400;
+}
+.c-score[data-score^="5."] {
+  color: orange;
+}
+.c-score[data-score^="6."] {
+  color: #cc9e00;
+}
+.c-score[data-score^="7."] {
+  color: #999600;
+}
+.c-score[data-score^="8."] {
+  color: #668f00;
+}
+.c-score[data-score^="9."] {
+  color: #338700;
+}
+.c-score[data-score^="10."] {
+  color: green;
+}
+.c-score--inverse {
+  vertical-align: middle;
+  padding-right: 0.28em;
+  /* [1] */
+  padding-left: 0.28em;
+  /* [1] */
+  font-weight: 400;
+  border-radius: 3px;
+}
+.c-score--inverse[data-score^="0."] {
+  background-color: red;
+  color: #fff;
+}
+.c-score--inverse[data-score^="1."] {
+  background-color: #ff2100;
+  color: #fff;
+}
+.c-score--inverse[data-score^="2."] {
+  background-color: #ff4200;
+  color: #fff;
+}
+.c-score--inverse[data-score^="3."] {
+  background-color: #ff6300;
+  color: #fff;
+}
+.c-score--inverse[data-score^="4."] {
+  background-color: #ff8400;
+  color: #fff;
+}
+.c-score--inverse[data-score^="5."] {
+  background-color: orange;
+  color: #fff;
+}
+.c-score--inverse[data-score^="6."] {
+  background-color: #cc9e00;
+  color: #fff;
+}
+.c-score--inverse[data-score^="7."] {
+  background-color: #999600;
+  color: #fff;
+}
+.c-score--inverse[data-score^="8."] {
+  background-color: #668f00;
+  color: #fff;
+}
+.c-score--inverse[data-score^="9."] {
+  background-color: #338700;
+  color: #fff;
+}
+.c-score--inverse[data-score^="10."] {
+  background-color: green;
+  color: #fff;
+}
+
+.c-score--small {
+  font-size: 14px;
+  font-size: 1rem;
+  line-height: 1.428571429;
+}
+
+/*------------------------------------*\
+  #BUTTONS
+\*------------------------------------*/
+/**
+ * 1. Allow us to style box model properties.
+ * 2. Line different sized buttons up a little nicer.
+ * 3. Make buttons inherit font styles (often necessary when styling `input`s as
+ *    buttons).
+ * 4. Reset/normalize some styles.
+ * 5. Force all button-styled elements to appear clickable.
+ * 6. Subtract the border size from the padding value so that buttons do not
+ *    grow larger as we add borders.
+ */
+.c-btn {
+  display: inline-block;
+  /* [1] */
+  vertical-align: middle;
+  /* [2] */
+  font: inherit;
+  /* [3] */
+  text-align: center;
+  /* [4] */
+  margin: 0;
+  /* [4] */
+  cursor: pointer;
+  /* [5] */
+  padding: 10px 20px;
+}
+.c-btn:hover, .c-btn:focus {
+  text-decoration: none;
+}
+
+.c-btn--primary {
+  background-color: #378bb5;
+  color: #fff;
+  border-radius: 3px;
+  transition: 0.333333333s;
+}
+.c-btn--primary:hover, .c-btn--primary:focus {
+  background-color: #317ca1;
+}
+.t-red .c-btn--primary {
+  background-color: #c00;
+}
+
+.c-btn--secondary {
+  background-color: #abc123;
+  color: #fff;
+  border-radius: 3px;
+  transition: 0.333333333s;
+}
+.c-btn--secondary:hover, .c-btn--secondary:focus {
+  background-color: #98ab1f;
+}
+
+.c-btn--small {
+  padding: 5px 10px;
+}
+
+.c-btn--large {
+  padding: 20px 40px;
+}
+
+/*------------------------------------*\
+  #AVATAR
+\*------------------------------------*/
+.c-avatar {
+  display: block;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+}
+
+.c-avatar--small {
+  width: 30px;
+  height: 30px;
+}
+
+.c-avatar--large {
+  width: 120px;
+  height: 120px;
+}
+
+/*------------------------------------*\
+  #TESTIMONIAL
+\*------------------------------------*/
+/**
+ * Testimonials feature a quote from a person and their photograph. The
+ * Testimonial component extends the Media Object.
+ */
+.c-testimonial {
+  font-size: 18px;
+  font-size: 1.285714286rem;
+  line-height: 1.111111111;
+  padding: 20px;
+  border-left: 8px solid #378bb5;
+  background-color: #fff;
+}
+
+.c-testimonial__title {
+  font-size: 12px;
+  font-size: 0.857142857rem;
+  line-height: 1.666666667;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0;
+}
+
+/**
+ * On smaller screens, hide the photo completely…
+ */
+.c-testimonial__photo {
+  display: none;
+  /**
+   * …but pop it back in as soon as we get room.
+   */
+}
+@media (min-width: 45em) {
+  .c-testimonial__photo {
+    display: block;
+  }
+}
+
+.c-testimonial__source {
+  display: block;
+  color: #666;
+}
+
+/*------------------------------------*\
+  #CALENDAR
+\*------------------------------------*/
+.c-calendar {
+  width: 100%;
+  table-layout: fixed;
+  font-size: 12px;
+  font-size: 0.857142857rem;
+  line-height: 1.666666667;
+  text-align: center;
+}
+.c-calendar th,
+.c-calendar td {
+  padding: 5px;
+  border: 1px solid #e4e4e4;
+  background-color: #fff;
+}
+.c-calendar th {
+  font-weight: 700;
+  border-bottom-width: 2px;
+}
+
+.c-calendar__title {
+  color: #fff;
+}
+.c-calendar__title.c-calendar__title {
+  background-color: #378bb5;
+  border-color: currentColor;
+  border-bottom-width: 1px;
+}
+
+.c-calendar__outside {
+  color: #999;
+}
+.c-calendar__outside.c-calendar__outside {
+  background-color: transparent;
+}
+
+.c-calendar__busy {
+  color: #fff;
+}
+.c-calendar__busy.c-calendar__busy {
+  background-color: #abc123;
+  border-color: currentColor;
+}
+
+/*------------------------------------*\
+  #HEADLINE
+\*------------------------------------*/
+.c-headline {
+  font-size: 14px;
+  font-size: 1rem;
+  line-height: 1.428571429;
+  font-weight: 400;
+  border-bottom: 1px solid #cccccc;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/*------------------------------------*\
+  #PROMO
+\*------------------------------------*/
+.c-promo {
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #507028;
+  color: #fff;
+  border-radius: 3px;
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.1);
+}
+.c-promo > :last-child {
+  margin-bottom: 0;
+}
+
+.c-promo__title {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/*------------------------------------*\
+  #PAGINATION
+\*------------------------------------*/
+.c-pagination {
+  font-family: Lato, sans-serif;
+  font-size: 12px;
+  font-size: 0.857142857rem;
+  line-height: 1.666666667;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  margin-bottom: 20px;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  text-align: center;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+/**
+ * 1. Hide all of the pagination items to start off with…
+ * 2. …but show them all on big enough screens.
+ */
+.c-pagination__item {
+  display: none;
+}
+@media (min-width: 45em) {
+  .c-pagination__item {
+    display: table-cell;
+  }
+}
+.c-pagination__item + .c-pagination__item {
+  border-left: 1px solid #fff;
+}
+
+/**
+ * Despite the show/hide stuff above, let’s explicitly force all relative
+ * pagination controls to be always visible.
+ *
+ * This means that on small screens, we only get First, Previous, Next, Last
+ * links, but on larger screens we get all of the numbers as well.
+ */
+.c-pagination__item--first,
+.c-pagination__item--prev,
+.c-pagination__item--next,
+.c-pagination__item--last {
+  display: table-cell;
+}
+
+.c-pagination__link {
+  text-decoration: none;
+  display: block;
+  padding: 5px;
+  color: #fff;
+  background-color: #378bb5;
+}
+@media (min-width: 30em) {
+  .c-pagination__link {
+    padding: 10px;
+  }
+}
+.c-pagination__link:hover, .c-pagination__link:focus {
+  background-color: #317ca1;
+}
+.c-pagination__link.is-current {
+  background-color: #4099c5;
+  text-decoration: underline;
+  cursor: default;
+}
+
+/*------------------------------------*\
+  #PROSE
+\*------------------------------------*/
+.s-prose {
+  /**
+   * Set continuous prose in a nice, large serif.
+   */
+  font-family: Baskerville, Garamond, Palatino, "Palatino Linotype", "Hoefler Text", "Times New Roman", serif;
+  font-size: 18px;
+  font-size: 1.285714286rem;
+  line-height: 1.111111111;
+  /**
+   * Make all headings in CMS-powered content the same size in order to
+   * prevent the user abusing visual vs. semantic hierarchy.
+   */
+  /**
+   * Make links a lot more obvious in continuous text by having them
+   * underlined and colored in their default state.
+   */
+  /**
+   * Indent list elements enough that their bullets are not leaking out of
+   * their container.
+   */
+  /**
+   * Prevent CMS users from abusing line breaks.
+   */
+  /**
+   * Discourage WYSIWYG users from applying their own styles.
+   */
+}
+.s-prose h1, .s-prose h2, .s-prose h3, .s-prose h4, .s-prose h5, .s-prose h6 {
+  font-family: Lato, sans-serif;
+  font-size: 18px;
+  font-size: 1.285714286rem;
+  line-height: 1.111111111;
+}
+.s-prose a {
+  color: #378bb5;
+  text-decoration: underline;
+  font-weight: 400;
+}
+.s-prose a:hover, .s-prose a:focus {
+  color: #317ca1;
+}
+.s-prose ul,
+.s-prose ol {
+  margin-left: 40px;
+}
+.s-prose br + br {
+  display: none;
+}
+.s-prose [style]:after {
+  content: " Please refrain from adding your own styling.";
+  color: red;
+}
+
+/*------------------------------------*\
+  #RED
+\*------------------------------------*/
+/**
+ * Apply a theme to the entire view. Add `class="t-red"` to the HTML or BODY
+ * element of the page.
+ */
+.t-red .c-btn--primary {
+  background-color: #c00;
+}

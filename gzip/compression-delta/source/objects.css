@@ -1,0 +1,150 @@
+@charset "UTF-8";
+/*------------------------------------*\
+  #WRAPPERS
+\*------------------------------------*/
+.o-wrapper {
+  max-width: 1280px;
+  padding-right: 20px;
+  padding-left: 20px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.o-wrapper:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/*------------------------------------*\
+  #LAYOUT
+\*------------------------------------*/
+.o-layout {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  margin-left: -20px;
+  font-size: 0;
+}
+
+.o-layout__item {
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+  padding-left: 20px;
+  font-size: 14px;
+  font-size: 1rem;
+  line-height: 1.428571429;
+}
+
+/*------------------------------------*\
+  #HEADLINE
+\*------------------------------------*/
+.o-headline {
+  margin-bottom: 1.428571429rem;
+}
+
+.o-headline__main,
+.o-headline__sub {
+  margin-bottom: 0;
+  line-height: 1;
+}
+
+/*------------------------------------*\
+  #MEDIA
+\*------------------------------------*/
+.o-media {
+  display: table;
+  width: 100%;
+}
+
+.o-media__img,
+.o-media__body {
+  display: table-cell;
+  vertical-align: top;
+}
+.o-media--middle > .o-media__img, .o-media--middle >
+.o-media__body {
+  vertical-align: middle;
+}
+
+.o-media__img {
+  padding-right: 20px;
+}
+.o-media__img img {
+  max-width: none;
+}
+
+.o-media__body {
+  width: 100%;
+}
+
+/*------------------------------------*\
+  #LIST-BARE
+\*------------------------------------*/
+.o-list-bare {
+  list-style: none;
+  margin-left: 0;
+}
+
+/*------------------------------------*\
+  #LIST-INLINE
+\*------------------------------------*/
+.o-list-inline {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.o-list-inline__item {
+  display: inline-block;
+}
+
+/*------------------------------------*\
+  #CROP
+\*------------------------------------*/
+/**
+ * Provide a cropping container in order to display media (usually images)
+ * cropped to certain ratios.
+ *
+ * 1. Set up a positioning context in which the image can sit.
+ * 2. This is the crucial part: where the cropping happens.
+ */
+.o-crop {
+  position: relative;
+  /* [1] */
+  display: block;
+  overflow: hidden;
+  /* [2] */
+}
+
+/**
+ * A variety of different standard ratios to crop to.
+ *
+ * We use the `padding` trick to create a fluid-height container (`padding`s set
+ * in percentages will track the current width of the element).
+ */
+.o-crop--1\:1 {
+  padding-top: 100%;
+}
+
+.o-crop--4\:3 {
+  padding-top: 75%;
+}
+
+.o-crop--16\:9 {
+  padding-top: 56.25%;
+}
+
+/**
+ * Apply this class to the content (usually `img`) that needs cropping.
+ *
+ * 1. Positioning to the bottom usually gives consistently better results as
+ *    most images’ subjects are toward the bottom of the frame. Of course,
+ *    your mileage may vary.
+ */
+.o-crop__content {
+  position: absolute;
+  bottom: 0;
+  /* [1] */
+  left: 0;
+}
